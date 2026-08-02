@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Referrals</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f7fc;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+height:100vh;
+background:#1e3a8a;
+position:fixed;
+left:0;
+top:0;
+overflow:auto;
+}
+
+.sidebar h2{
+color:white;
+text-align:center;
+padding:25px 10px;
+border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.sidebar a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+}
+
+.sidebar .active{
+background:#2563eb;
+}
+
+/* Main */
+
+.main{
+margin-left:240px;
+width:calc(100% - 240px);
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.logout{
+padding:10px 20px;
+background:#e53935;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.logout:hover{
+background:#c62828;
+}
+
+.search{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+margin-bottom:25px;
+}
+
+.jobs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h2{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.company{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.location{
+margin-bottom:10px;
+color:#666;
+}
+
+.salary{
+color:green;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+button{
+padding:10px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🎓 Alumni Portal</h2>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="profile.html">👤 Profile</a>
+
+<a class="active" href="jobs.html">💼 Job Referrals</a>
+
+<a href="mentorship.html">🤝 Mentorship</a>
+
+<a href="events.html">📅 Events</a>
+
+<a href="messages.html">💬 Messages</a>
+
+<a href="admin.html">👨‍💼 Admin</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+
+<h1>💼 Job Referrals</h1>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+<input
+class="search"
+type="text"
+placeholder="Search Jobs...">
+
+<div class="jobs">
+
+<div class="card">
+
+<h2>Software Engineer</h2>
+
+<p class="company">Google</p>
+
+<p class="location">📍 Bangalore</p>
+
+<p class="salary">₹12 LPA</p>
+
+<button onclick="applyJob('Google')">Apply</button>
+
+</div>
+
+<div class="card">
+
+<h2>Frontend Developer</h2>
+
+<p class="company">Zoho</p>
+
+<p class="location">📍 Chennai</p>
+
+<p class="salary">₹8 LPA</p>
+
+<button onclick="applyJob('Zoho')">Apply</button>
+
+</div>
+
+<div class="card">
+
+<h2>Java Developer</h2>
+
+<p class="company">TCS</p>
+
+<p class="location">📍 Hyderabad</p>
+
+<p class="salary">₹6 LPA</p>
+
+<button onclick="applyJob('TCS')">Apply</button>
+
+</div>
+
+<div class="card">
+
+<h2>Full Stack Developer</h2>
+
+<p class="company">Infosys</p>
+
+<p class="location">📍 Pune</p>
+
+<p class="salary">₹9 LPA</p>
+
+<button onclick="applyJob('Infosys')">Apply</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function applyJob(company){
+
+alert("Application sent to " + company + " successfully!");
+
+}
+
+function logout(){
+
+if(confirm("Logout?")){
+
+window.location.href="login.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

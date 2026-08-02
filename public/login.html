@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alumni Networking Portal - Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+}
+
+.container{
+    width:900px;
+    height:500px;
+    background:#fff;
+    border-radius:15px;
+    display:flex;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.left{
+    width:50%;
+    background:linear-gradient(135deg,#1d4ed8,#0f172a);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    text-align:center;
+}
+
+.left h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.left p{
+    line-height:28px;
+}
+
+.right{
+    width:50%;
+    padding:50px;
+}
+
+.right h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#1e3a8a;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    margin-bottom:18px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.register{
+    text-align:center;
+    margin-top:20px;
+}
+
+.register a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<h1>Alumni Networking Portal</h1>
+
+<p>
+Connect Students and Alumni<br>
+Build your professional network,<br>
+Find mentors and job opportunities.
+</p>
+
+</div>
+
+<div class="right">
+
+<h2>Login</h2>
+
+<form id="loginForm">
+
+<select id="role">
+<option value="Student">Student</option>
+<option value="Alumni">Alumni</option>
+</select>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email"
+required>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<div class="register">
+
+Don't have an account?
+
+<a href="register.html">Register</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const loginForm=document.getElementById("loginForm");
+
+loginForm.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const email=document.getElementById("email").value;
+
+const password=document.getElementById("password").value;
+
+try{
+
+const response=await fetch("/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email:email,
+
+password:password
+
+})
+
+});
+
+const data=await response.json();
+
+alert(data.message);
+
+if(data.success){
+
+window.location.href="dashboard.html";
+
+}
+
+}catch(error){
+
+console.log(error);
+
+alert("Server Error");
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

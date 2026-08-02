@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f7fc;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+height:100vh;
+background:#1e3a8a;
+position:fixed;
+left:0;
+top:0;
+padding-top:20px;
+}
+
+.sidebar h2{
+color:white;
+text-align:center;
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+padding:15px 20px;
+font-size:17px;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+}
+
+/* Main Content */
+
+.main{
+margin-left:240px;
+width:calc(100% - 240px);
+padding:30px;
+}
+
+.header{
+background:#1e3a8a;
+color:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.container h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+input,
+textarea{
+width:100%;
+padding:12px;
+margin:12px 0;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:15px;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+padding:12px 25px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🎓 Alumni Portal</h2>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="profile.html">👤 Profile</a>
+
+<a href="jobs.html">💼 Job Referrals</a>
+
+<a href="mentorship.html">🤝 Mentorship</a>
+
+<a href="events.html">📅 Events</a>
+
+<a href="messages.html">💬 Messages</a>
+
+<a href="admin.html">👨‍💼 Admin</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+<h1>Profile Management</h1>
+</div>
+
+<div class="container">
+
+<h2>Student / Alumni Profile</h2>
+
+<input type="text" placeholder="Full Name" id="name">
+
+<input type="email" placeholder="Email" id="email">
+
+<input type="text" placeholder="Department / Company" id="department">
+
+<input type="text" placeholder="Skills" id="skills">
+
+<textarea placeholder="About Yourself" id="about"></textarea>
+
+<button onclick="saveProfile()">Save Profile</button>
+
+</div>
+
+</div>
+
+<script>
+
+async function saveProfile(){
+
+const response = await fetch("/profile",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+name:document.getElementById("name").value,
+
+email:document.getElementById("email").value,
+
+department:document.getElementById("department").value,
+
+skills:document.getElementById("skills").value,
+
+about:document.getElementById("about").value
+
+})
+
+});
+
+const data=await response.json();
+
+alert(data.message);
+
+}
+
+</script>
+
+</body>
+</html>

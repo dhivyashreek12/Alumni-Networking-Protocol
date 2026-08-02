@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f7fc;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+height:100vh;
+background:#1e3a8a;
+position:fixed;
+left:0;
+top:0;
+overflow:auto;
+}
+
+.sidebar h2{
+color:white;
+text-align:center;
+padding:25px 10px;
+border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.sidebar a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+}
+
+.sidebar .active{
+background:#2563eb;
+}
+
+/* Main */
+
+.main{
+margin-left:240px;
+width:calc(100% - 240px);
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.logout{
+padding:10px 20px;
+background:#e53935;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.logout:hover{
+background:#c62828;
+}
+
+.events{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.date{
+width:70px;
+height:70px;
+background:#2563eb;
+color:white;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin-bottom:15px;
+}
+
+.date h2{
+font-size:24px;
+}
+
+.date p{
+font-size:14px;
+}
+
+.card h3{
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.details{
+line-height:28px;
+color:#555;
+margin-bottom:15px;
+}
+
+button{
+padding:10px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🎓 Alumni Portal</h2>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="profile.html">👤 Profile</a>
+
+<a href="jobs.html">💼 Job Referrals</a>
+
+<a href="mentorship.html">🤝 Mentorship</a>
+
+<a class="active" href="events.html">📅 Events</a>
+
+<a href="messages.html">💬 Messages</a>
+
+<a href="admin.html">👨‍💼 Admin</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+
+<h1>📅 Upcoming Events</h1>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="events">
+
+<div class="card">
+
+<div class="date">
+<h2>25</h2>
+<p>AUG</p>
+</div>
+
+<h3>Alumni Meet 2026</h3>
+
+<div class="details">
+📍 College Auditorium<br>
+🕘 10:00 AM
+</div>
+
+<button onclick="registerEvent('Alumni Meet 2026')">
+Register
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="date">
+<h2>10</h2>
+<p>SEP</p>
+</div>
+
+<h3>Career Guidance Webinar</h3>
+
+<div class="details">
+💻 Online Event<br>
+🕒 3:00 PM
+</div>
+
+<button onclick="registerEvent('Career Guidance Webinar')">
+Register
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="date">
+<h2>18</h2>
+<p>SEP</p>
+</div>
+
+<h3>Placement Training</h3>
+
+<div class="details">
+📍 Seminar Hall<br>
+🕙 11:00 AM
+</div>
+
+<button onclick="registerEvent('Placement Training')">
+Register
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function registerEvent(eventName){
+
+alert("Successfully registered for " + eventName + "!");
+
+}
+
+function logout(){
+
+if(confirm("Are you sure you want to logout?")){
+
+window.location.href="login.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

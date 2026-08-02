@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f7fc;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+height:100vh;
+background:#1e3a8a;
+position:fixed;
+left:0;
+top:0;
+overflow:auto;
+}
+
+.sidebar h2{
+color:white;
+text-align:center;
+padding:25px 10px;
+border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.sidebar a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+}
+
+.sidebar .active{
+background:#2563eb;
+}
+
+/* Main */
+
+.main{
+margin-left:240px;
+width:calc(100% - 240px);
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.logout{
+padding:10px 20px;
+background:#e53935;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.logout:hover{
+background:#c62828;
+}
+
+/* Chat */
+
+.chat-container{
+width:100%;
+height:650px;
+background:#fff;
+display:flex;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+/* Users */
+
+.users{
+width:30%;
+background:#1e3a8a;
+color:white;
+padding:20px;
+}
+
+.users h2{
+margin-bottom:20px;
+}
+
+.user{
+padding:15px;
+margin-bottom:10px;
+background:rgba(255,255,255,.15);
+border-radius:8px;
+cursor:pointer;
+}
+
+.user:hover{
+background:#2563eb;
+}
+
+/* Chat */
+
+.chat{
+width:70%;
+display:flex;
+flex-direction:column;
+}
+
+.chat-header{
+background:#2563eb;
+color:white;
+padding:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+.chat-body{
+flex:1;
+padding:20px;
+background:#f4f7fc;
+overflow-y:auto;
+}
+
+.message{
+padding:10px 15px;
+margin:10px 0;
+border-radius:10px;
+max-width:70%;
+}
+
+.received{
+background:#ddd;
+width:max-content;
+}
+
+.sent{
+background:#2563eb;
+color:white;
+margin-left:auto;
+width:max-content;
+}
+
+.chat-footer{
+display:flex;
+padding:15px;
+border-top:1px solid #ccc;
+background:white;
+}
+
+.chat-footer input{
+flex:1;
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
+
+.chat-footer button{
+margin-left:10px;
+padding:12px 25px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.chat-footer button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h2>🎓 Alumni Portal</h2>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="profile.html">👤 Profile</a>
+
+<a href="jobs.html">💼 Job Referrals</a>
+
+<a href="mentorship.html">🤝 Mentorship</a>
+
+<a href="events.html">📅 Events</a>
+
+<a class="active" href="messages.html">💬 Messages</a>
+
+<a href="admin.html">👨‍💼 Admin</a>
+
+<a href="login.html">🚪 Logout</a>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
+
+<h1>💬 Direct Messages</h1>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+<div class="chat-container">
+
+<div class="users">
+
+<h2>Mentors</h2>
+
+<div class="user">👨 Rahul Sharma</div>
+
+<div class="user">👩 Priya Nair</div>
+
+<div class="user">👨 Arun Kumar</div>
+
+</div>
+
+<div class="chat">
+
+<div class="chat-header">
+Rahul Sharma
+</div>
+
+<div class="chat-body" id="chatBody">
+
+<div class="message received">
+Hello! How can I help you?
+</div>
+
+<div class="message sent">
+I need career guidance.
+</div>
+
+</div>
+
+<div class="chat-footer">
+
+<input type="text" id="msg" placeholder="Type your message...">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+const input=document.getElementById("msg");
+const msg=input.value.trim();
+
+if(msg==="") return;
+
+const chat=document.getElementById("chatBody");
+
+chat.innerHTML += `
+<div class="message sent">${msg}</div>
+`;
+
+input.value="";
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+function logout(){
+
+if(confirm("Are you sure you want to logout?")){
+
+window.location.href="login.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | Alumni Networking Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+}
+
+.container{
+    width:900px;
+    background:#fff;
+    border-radius:15px;
+    display:flex;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.left{
+    width:45%;
+    background:#1e3a8a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:30px;
+    text-align:center;
+}
+
+.left h1{
+    margin-bottom:15px;
+}
+
+.left p{
+    line-height:28px;
+}
+
+.right{
+    width:55%;
+    padding:40px;
+}
+
+.right h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#1e3a8a;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:15px;
+}
+
+.login-link a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="left">
+<h1>Alumni Networking Portal</h1>
+<p>
+Create your account and connect with students and alumni for mentorship, job referrals and networking.
+</p>
+</div>
+
+<div class="right">
+
+<h2>Create Account</h2>
+
+<form id="registerForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="email" id="email" placeholder="Email Address" required>
+
+<input type="password" id="password" placeholder="Password" required>
+
+<select id="role">
+<option value="Student">Student</option>
+<option value="Alumni">Alumni</option>
+</select>
+
+<button type="submit">Register</button>
+
+</form>
+
+<div class="login-link">
+Already have an account?
+<a href="login.html">Login</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Registration Successful!");
+
+window.location.href="login.html";
+
+});
+
+</script>
+<a href="login.html">Login</a>
+</body>
+</html>
